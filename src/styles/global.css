@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+/*
+ * `sheet:` = 「桌面档案纸」形态。
+ * 宽屏和打印共用同一套多栏排版，避免打印时因为 viewport 宽度
+ * 意外落回移动端单栏布局。
+ */
+@custom-variant sheet {
+  @media screen and (width >= 64rem) {
+    @slot;
+  }
+  @media print {
+    @slot;
+  }
+}
+
+/*
+ * 字号与若干尺寸的三套取值：移动端 / 宽屏 / 打印。
+ * 宽屏和打印共用同一套「多栏档案纸」布局（见上面的 sheet variant），
+ * 但字号是分开的：屏幕上要正常阅读尺寸，打印时才收紧到能塞进一张 A4。
+ * 想调整排版密度，改这里就够了，不用去翻模板。
+ */
+:root {
+  --fs-display: 38px;
+  --fs-sep: 17px;
+  --fs-alias: 19px;
+  --fs-eyebrow: 10px;
+  --fs-title: 16px;
+  --fs-title-en: 9.5px;
+  --fs-lede: 14.5px;
+  --fs-motto: 12px;
+  --fs-body: 15px;
+  --fs-item-title: 15px;
+  --fs-kind: 9.5px;
+  --fs-item: 14px;
+  --fs-side: 14px;
+  --fs-detail: 13.5px;
+  --fs-tag: 13px;
+  --fs-label: 9.5px;
+  --fs-num: 10.5px;
+  --fs-micro: 10.5px;
+
+  --w-label: 60px;
+  --col-side: 62mm;
+  --sheet-max: 297mm;
+  --pad-y: 5mm;
+  --gap-side: 5mm;
+}
+
+@media screen and (width >= 64rem) {
+  :root {
+    --fs-display: 46px;
+    --fs-sep: 20px;
+    --fs-alias: 23px;
+    --fs-eyebrow: 11px;
+    --fs-title: 17px;
+    --fs-title-en: 10px;
+    --fs-lede: 15.5px;
+    --fs-motto: 13px;
+    --fs-body: 15.5px;
+    --fs-item-title: 15.5px;
+    --fs-kind: 10px;
+    --fs-item: 14.5px;
+    --fs-side: 14.5px;
+    --fs-detail: 14px;
+    --fs-tag: 13.5px;
+    --fs-label: 10px;
+    --fs-num: 11px;
+    --fs-micro: 11px;
+
+    --w-label: 76px;
+    --col-side: 76mm;
+    --sheet-max: 1240px;
+    --pad-y: 6mm;
+    --gap-side: 7mm;
+  }
+}
+
+@media print {
+  :root {
+    --fs-display: 34px;
+    --fs-sep: 15px;
+    --fs-alias: 17px;
+    --fs-eyebrow: 8.5px;
+    --fs-title: 12px;
+    --fs-title-en: 8.5px;
+    --fs-lede: 11px;
+    --fs-motto: 9.5px;
+    --fs-body: 11.5px;
+    --fs-item-title: 12px;
+    --fs-kind: 8.5px;
+    --fs-item: 11px;
+    --fs-side: 10.5px;
+    --fs-detail: 10.5px;
+    --fs-tag: 10px;
+    --fs-label: 8.5px;
+    --fs-num: 8.5px;
+    --fs-micro: 8.5px;
+
+    --w-label: 16mm;
+    --col-side: 62mm;
+    /* 打印时高度预算很紧，这两个值是塞进一张 A4 的关键，别随手放大 */
+    --pad-y: 3.5mm;
+    --gap-side: 2mm;
+  }
+}
+
+@page {
+  size: A4 landscape;
+  margin: 0;
+}
+
+html {
+  color-scheme: light;
+  -webkit-text-size-adjust: 100%;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* 占位内容：等待补充真实信息 */
+.ph {
+  color: var(--color-slate-400);
+}
+
+@media print {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+  }
+
+  /* 严格一页：内容必须控制在 210mm 内，超出会被裁掉 */
+  .sheet {
+    width: 297mm;
+    height: 210mm;
+    max-width: none;
+    min-height: 0;
+    margin: 0;
+    border: 0;
+    overflow: hidden;
+  }
+}

@@ -1,17 +1,317 @@
 ---
+import "../styles/global.css";
+import SectionHeading from "../components/SectionHeading.astro";
+import {
+  profile,
+  about,
+  now,
+  contacts,
+  identities,
+  projects,
+  stack,
+  topics,
+  misc,
+} from "../data/profile";
 
+/** 以「待补充」开头的文字按占位样式渲染 */
+const isPlaceholder = (text: string) => text.startsWith("待补充");
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="5 分钟了解 tcdw：我是谁、最近在做什么、技术方向，以及适合和我聊的话题。" />
+    <title>5 分钟了解 tcdw</title>
+  </head>
+
+  <body class="bg-slate-200/70 text-slate-700 antialiased sheet:p-10">
+    <div
+      class="sheet mx-auto flex w-full max-w-[var(--sheet-max)] flex-col border-t-[3px] border-orange-500 bg-[#fffdfa] sheet:min-h-[210mm] sheet:border sheet:border-t-[3px] sheet:border-slate-300 sheet:border-t-orange-500"
+    >
+      <!-- 报头 -->
+      <header
+        class="flex flex-col gap-3 border-b border-slate-300 px-5 pt-7 pb-5 sheet:flex-row sheet:items-end sheet:justify-between sheet:gap-10 sheet:px-[11mm] sheet:pt-[5.5mm] sheet:pb-[4mm]"
+      >
+        <div>
+          <p class="text-(length:--fs-eyebrow) uppercase tracking-[0.3em] text-orange-600">
+            {profile.kicker} · A 5-Minute Intro
+          </p>
+          <h1 class="mt-2 flex items-baseline gap-2.5 sheet:mt-1.5">
+            <span
+              class="font-serif text-(length:--fs-display) leading-none tracking-tight text-slate-900"
+              >{profile.name}</span
+            >
+            <span class="text-(length:--fs-sep) leading-none text-slate-300">／</span>
+            <span class="text-(length:--fs-alias) leading-none font-medium text-slate-600"
+              >{profile.alias}</span
+            >
+          </h1>
+        </div>
+        <div class="max-w-[96mm] space-y-1 sheet:space-y-[1mm]">
+          <p
+            class:list={[
+              "text-(length:--fs-lede) leading-relaxed",
+              isPlaceholder(profile.tagline) ? "ph" : "text-slate-600",
+            ]}
+          >
+            {profile.tagline}
+          </p>
+          <p class="text-(length:--fs-motto) text-sky-700/80">
+            {profile.motto}{" "}
+            <span class="text-slate-400">— GitHub bio</span>
+          </p>
+        </div>
+      </header>
+
+      <!-- 主体 -->
+      <div
+        class="flex flex-1 flex-col sheet:grid sheet:grid-cols-[var(--col-side)_1fr] sheet:grid-rows-[auto_1fr]"
+      >
+        <!-- 侧栏 · 上半：头像与状态 -->
+        <aside
+          class="border-b border-slate-200 bg-orange-50/50 px-5 py-6 sheet:col-start-1 sheet:row-start-1 sheet:border-b-0 sheet:border-r sheet:px-[7mm] sheet:pt-[var(--pad-y)] sheet:pb-0"
+        >
+          {
+            profile.avatar ? (
+              <img
+                src={profile.avatar}
+                alt={profile.name}
+                class="aspect-square w-[110px] rounded-sm border border-orange-200 object-cover sheet:w-[28mm]"
+              />
+            ) : (
+              <div class="grid aspect-square w-[110px] place-items-center rounded-sm border border-dashed border-orange-300 bg-orange-100/50 text-(length:--fs-label) tracking-[0.2em] text-orange-700/70 uppercase sheet:w-[28mm]">
+                Avatar
+              </div>
+            )
+          }
+
+          <dl class="mt-5 space-y-2.5 sheet:mt-[5mm] sheet:space-y-[3mm]">
+            {
+              now.map((row) => (
+                <div>
+                  <dt class="text-(length:--fs-label) tracking-[0.16em] text-slate-400 uppercase">
+                    {row.label}
+                  </dt>
+                  <dd
+                    class:list={[
+                      "mt-0.5 text-(length:--fs-side) leading-snug",
+                      isPlaceholder(row.value) ? "ph" : "text-slate-700",
+                    ]}
+                  >
+                    {row.value}
+                  </dd>
+                </div>
+              ))
+            }
+          </dl>
+        </aside>
+
+        <!-- 主内容 -->
+        <main
+          class="flex flex-col gap-6 px-5 py-6 sheet:col-start-2 sheet:row-span-2 sheet:row-start-1 sheet:justify-between sheet:gap-[7mm] sheet:px-[8mm] sheet:py-[var(--pad-y)]"
+        >
+          <section>
+            <SectionHeading title="我是谁" label="Who" />
+            <div class="mt-2.5 space-y-1.5 sheet:mt-[2.5mm] sheet:space-y-[1.5mm]">
+              {
+                about.map((line) => (
+                  <p
+                    class:list={[
+                      "text-(length:--fs-body) leading-relaxed",
+                      isPlaceholder(line) ? "ph" : "text-slate-700",
+                    ]}
+                  >
+                    {line}
+                  </p>
+                ))
+              }
+            </div>
+          </section>
+
+          <section>
+            <SectionHeading title="最近在做什么" label="Now" />
+            <div
+              class="mt-3 grid gap-4 sheet:mt-[3mm] sheet:grid-cols-2 sheet:gap-x-[7mm] sheet:gap-y-[6mm]"
+            >
+              {
+                projects.map((project) => (
+                  <article class="border-l-2 border-orange-200 pl-3 sheet:pl-[3mm]">
+                    <div class="flex items-baseline gap-2">
+                      <h3 class="text-(length:--fs-item-title) font-semibold text-slate-900">
+                        {project.title}
+                      </h3>
+                      <span class="text-(length:--fs-kind) tracking-[0.12em] text-sky-700 uppercase">
+                        {project.kind}
+                      </span>
+                    </div>
+                    <p
+                      class:list={[
+                        "mt-1 text-(length:--fs-item) leading-relaxed sheet:mt-[1mm]",
+                        isPlaceholder(project.summary) ? "ph" : "text-slate-700",
+                      ]}
+                    >
+                      {project.summary}
+                    </p>
+                    <p
+                      class:list={[
+                        "mt-0.5 text-(length:--fs-detail) leading-relaxed",
+                        isPlaceholder(project.detail) ? "ph" : "text-slate-500",
+                      ]}
+                    >
+                      {project.detail}
+                    </p>
+                  </article>
+                ))
+              }
+            </div>
+          </section>
+
+          <div
+            class="flex flex-col gap-6 sheet:grid sheet:grid-cols-[1fr_auto_1fr] sheet:gap-0"
+          >
+            <section>
+              <SectionHeading title="技术方向" label="Stack" tone="accent" />
+              <div class="mt-3 space-y-2.5 sheet:mt-[3mm] sheet:space-y-[5mm]">
+                {
+                  stack.map((group) => (
+                    <div>
+                      <p class="text-(length:--fs-label) tracking-[0.16em] text-slate-400 uppercase">
+                        {group.group}
+                      </p>
+                      <ul class="mt-1.5 flex flex-wrap gap-1.5 sheet:mt-[1.5mm] sheet:gap-1">
+                        {group.items.map((item) => (
+                          <li class="rounded-[2px] border border-sky-200 bg-sky-50/70 px-1.5 py-0.5 text-(length:--fs-tag) text-sky-800 sheet:px-1">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))
+                }
+              </div>
+            </section>
+
+            <div class="hidden sheet:mx-[7mm] sheet:block sheet:w-px sheet:bg-slate-200"></div>
+
+            <section>
+              <SectionHeading title="适合和我聊" label="Topics" tone="accent" />
+              <ol class="mt-3 space-y-1.5 sheet:mt-[3mm] sheet:space-y-[3.5mm]">
+                {
+                  topics.map((topic, index) => (
+                    <li class="flex gap-2 text-(length:--fs-item) leading-snug text-slate-700 sheet:gap-[2mm]">
+                      <span class="shrink-0 pt-px font-mono text-(length:--fs-num) text-orange-500">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span>{topic}</span>
+                    </li>
+                  ))
+                }
+              </ol>
+            </section>
+          </div>
+        </main>
+
+        <!-- 侧栏 · 下半：联系方式与网络身份 -->
+        <aside
+          class="border-t border-slate-200 bg-orange-50/50 px-5 py-6 sheet:col-start-1 sheet:row-start-2 sheet:flex sheet:flex-col sheet:border-t-0 sheet:border-r sheet:border-slate-200 sheet:px-[7mm] sheet:pt-[var(--gap-side)] sheet:pb-[var(--pad-y)]"
+        >
+          <div class="space-y-5 sheet:flex sheet:h-full sheet:flex-col sheet:justify-between sheet:gap-[var(--gap-side)] sheet:space-y-0">
+            <div>
+              <SectionHeading title="联系方式" label="Contact" />
+              <dl class="mt-2.5 space-y-1.5 sheet:mt-[2.5mm] sheet:space-y-[1.5mm]">
+                {
+                  contacts.map((row) => (
+                    <div class="flex items-baseline gap-2">
+                      <dt class="w-[var(--w-label)] shrink-0 text-(length:--fs-label) tracking-[0.16em] text-slate-400 uppercase">
+                        {row.label}
+                      </dt>
+                      <dd
+                        class:list={[
+                          "text-(length:--fs-side) leading-snug",
+                          isPlaceholder(row.value) ? "ph" : "text-slate-700",
+                        ]}
+                      >
+                        {row.value}
+                      </dd>
+                    </div>
+                  ))
+                }
+              </dl>
+            </div>
+
+            <div>
+              <SectionHeading title="互联网身份" label="Online" tone="accent" />
+              <dl class="mt-2.5 space-y-1.5 sheet:mt-[2.5mm] sheet:space-y-[1.5mm]">
+                {
+                  identities.map((row) => (
+                    <div class="flex items-baseline gap-2">
+                      <dt class="w-[var(--w-label)] shrink-0 text-(length:--fs-label) tracking-[0.16em] text-slate-400 uppercase">
+                        {row.label}
+                      </dt>
+                      <dd class="text-(length:--fs-side) leading-snug">
+                        <a
+                          href={row.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="text-sky-800 underline decoration-sky-300 underline-offset-2 transition-colors hover:text-sky-600 hover:decoration-sky-500"
+                        >
+                          {row.value}
+                        </a>
+                      </dd>
+                    </div>
+                  ))
+                }
+              </dl>
+            </div>
+
+            <div>
+              <SectionHeading title="其他" label="Misc" />
+              <dl class="mt-2.5 space-y-2 sheet:mt-[2.5mm] sheet:space-y-[2mm]">
+                {
+                  misc.map((row) => (
+                    <div>
+                      <dt class="text-(length:--fs-label) tracking-[0.16em] text-slate-400 uppercase">
+                        {row.label}
+                      </dt>
+                      <dd
+                        class:list={[
+                          "mt-0.5 text-(length:--fs-side) leading-snug",
+                          isPlaceholder(row.value) ? "ph" : "text-slate-700",
+                        ]}
+                      >
+                        {row.value}
+                      </dd>
+                    </div>
+                  ))
+                }
+              </dl>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- 页脚 -->
+      <footer
+        class="flex items-center justify-between gap-4 border-t border-slate-300 px-5 py-4 text-(length:--fs-micro) text-slate-400 sheet:px-[11mm] sheet:py-[2.5mm]"
+      >
+        <p class="tracking-[0.14em] uppercase">
+          {profile.site} · Updated {profile.updatedAt}
+        </p>
+        <div class="flex items-center gap-4">
+          <p class="hidden tracking-[0.14em] uppercase sheet:block">A4 Landscape · Single Page</p>
+          <button
+            type="button"
+            onclick="window.print()"
+            class="cursor-pointer rounded-[2px] border border-slate-300 px-2 py-0.5 tracking-[0.14em] text-slate-500 uppercase transition-colors hover:border-orange-300 hover:text-orange-700 print:hidden"
+          >
+            打印 / PDF
+          </button>
+        </div>
+      </footer>
+    </div>
+  </body>
 </html>

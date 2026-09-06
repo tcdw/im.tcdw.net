@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string;
+  label: string;
+  tone?: "primary" | "accent";
+}
+
+const { title, label, tone = "primary" } = Astro.props;
+---
+
+<h2 class="flex items-center gap-2.5">
+  <span class="text-(length:--fs-title) font-semibold tracking-tight text-slate-900">
+    {title}
+  </span>
+  <span
+    class:list={[
+      "text-(length:--fs-title-en) uppercase tracking-[0.22em]",
+      tone === "accent" ? "text-sky-600" : "text-orange-600",
+    ]}
+  >
+    {label}
+  </span>
+  <span
+    class:list={[
+      "h-px flex-1",
+      tone === "accent" ? "bg-sky-200/70" : "bg-orange-200/70",
+    ]}></span>
+</h2>

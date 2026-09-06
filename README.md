@@ -41,3 +41,21 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+## 「5 分钟了解 tcdw」页面
+
+一页式个人介绍，桌面端 / 打印版是一张 A4 横向（297mm × 210mm）的 profile sheet，
+窄屏重排为单栏。
+
+- 内容全部集中在 `src/data/profile.ts`（资料来自博客仓库与 GitHub，文件顶部有来源说明），以「待补充」开头的字符串会以浅色占位样式渲染，
+  直接替换文字即可，无需改动模板。
+- 头像：`public/avatar.png`（从博客仓库 `src/assets/avatar.png` 复制并缩放到 512px）。
+  换头像就替换这个文件，或改 `profile.avatar` 指向别的路径。
+- 打印：页面右下角的「打印 / PDF」按钮，或浏览器打印。`@page` 已固定为 A4 横向、零边距，
+  记得在打印对话框里勾选「背景图形」。
+- 布局约定：`sheet:` 这个 Tailwind 自定义 variant 同时覆盖「宽屏」和「打印」两种场景
+  （见 `src/styles/global.css`），所以打印时不会意外落回移动端单栏布局。
+- 字号与部分尺寸走 CSS 变量（`--fs-*`、`--pad-y` 等），在 `src/styles/global.css` 里分
+  「移动端 / 宽屏 / 打印」三套取值：屏幕上是正常阅读字号，只有打印时才收紧到能塞进一张 A4。
+  想调排版密度改那里就够了，模板里没有写死的 px。
+- 打印版是严格的一页，内容高度上限约 210mm；写内容时留意别把某个 section 撑得太长。
