@@ -2,10 +2,10 @@
 interface Props {
   title: string;
   label: string;
-  tone?: "primary" | "accent";
+  tone?: 'primary' | 'accent';
 }
 
-const { title, label, tone = "primary" } = Astro.props;
+const { title, label, tone = 'primary' } = Astro.props;
 ---
 
 <h2 class="flex items-center gap-2.5">

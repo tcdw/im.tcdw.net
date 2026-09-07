@@ -1,20 +1,10 @@
 ---
-import "../styles/global.css";
-import SectionHeading from "../components/SectionHeading.astro";
-import {
-  profile,
-  about,
-  now,
-  contacts,
-  identities,
-  projects,
-  stack,
-  topics,
-  misc,
-} from "../data/profile";
+import '../styles/global.css';
+import SectionHeading from '../components/SectionHeading.astro';
+import { about, contacts, identities, misc, now, profile, projects, stack, topics } from '../data/profile';
 
 /** 以「待补充」开头的文字按占位样式渲染 */
-const isPlaceholder = (text: string) => text.startsWith("待补充");
+const isPlaceholder = (text: string) => text.startsWith('待补充');
 ---
 
 <html lang="zh-CN">

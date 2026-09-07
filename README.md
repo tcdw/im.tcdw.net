@@ -59,3 +59,22 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
   「移动端 / 宽屏 / 打印」三套取值：屏幕上是正常阅读字号，只有打印时才收紧到能塞进一张 A4。
   想调排版密度改那里就够了，模板里没有写死的 px。
 - 打印版是严格的一页，内容高度上限约 210mm；写内容时留意别把某个 section 撑得太长。
+
+## 代码风格
+
+用 Biome（配置从 plasticwan 抄来，`biome.json`）：
+
+```
+pnpm lint       # biome check .  —— lint + format + import 整理，只检查
+pnpm lint:fix   # biome check --write .  —— 应用安全修复
+```
+
+两个和 Astro 有关的配置要点：
+
+- `css.parser.tailwindDirectives: true`。否则 `global.css` 里的 `@custom-variant`
+  会被当成语法错误，整个文件跳过格式化。
+- `overrides` 里对 `**/*.astro` 关掉了 `noUnusedImports` 和 `noUnusedVariables`。
+  Biome 只解析 `.astro` 的 frontmatter，看不到下面的模板，所以只在模板里用到的
+  import 和变量会被误判为「未使用」——开着的话 `--write --unsafe` 会直接把它们删掉。
+
+Biome 只格式化 `.astro` 的 frontmatter，模板部分不动。`public/` 是静态资源，已排除。
