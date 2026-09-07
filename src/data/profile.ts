@@ -17,7 +17,7 @@ export const profile = {
   alias: '碗',
   kicker: '5 分钟了解',
   // 博客首页自述
-  tagline: '小透明前端（Web / 移动端）开发者，是 React Native (Expo) 用户。',
+  tagline: '小透明前端（Web / 移动端）开发者，React Native (Expo) 用户',
   // GitHub bio
   motto: '面向咕咕编程 (Pigeon-oriented programming)',
   // 从博客仓库 src/assets/avatar.png 复制并缩放而来
@@ -38,14 +38,14 @@ export const now = [
   // 博客首页现在写的是「~~在北京当社畜。~~失业中。」，最新一篇文章也是在聊求职
   { label: '状态', value: '失业中，正在找新的机会' },
   // 博客上「北京」已划掉，GitHub 只写了 China，先留空
-  { label: '坐标', value: '待补充：现居城市' },
-  { label: '在玩', value: '生成式 AI、Homelab、城市摄影' },
+  { label: '坐标', value: '北京' },
+  { label: '喜欢', value: 'Homelab、轨道交通、城市摄影' },
 ];
 
 /** 联系方式：没有在公开渠道确认过的一律留占位，不要猜 */
 export const contacts = [
-  { label: 'Email', value: '待补充' },
-  { label: 'Telegram', value: '待补充' },
+  { label: 'Email', value: 'tcdw2011@gmail.com' },
+  { label: 'Telegram', value: 'tcdwww' },
 ];
 
 /** 互联网身份 */

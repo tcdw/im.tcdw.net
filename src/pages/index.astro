@@ -14,45 +14,51 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="5 分钟了解 tcdw：我是谁、最近在做什么、技术方向，以及适合和我聊的话题。" />
+    <meta
+      name="description"
+      content="5 分钟了解 tcdw：我是谁、最近在做什么、技术方向，以及适合和我聊的话题。"
+   />
     <title>5 分钟了解 tcdw</title>
   </head>
 
-  <body class="bg-slate-200/70 text-slate-700 antialiased sheet:p-10">
+  <body class="bg-gray-100/70 text-gray-700 sheet:p-10">
     <div
-      class="sheet mx-auto flex w-full max-w-[var(--sheet-max)] flex-col border-t-[3px] border-orange-500 bg-[#fffdfa] sheet:min-h-[210mm] sheet:border sheet:border-t-[3px] sheet:border-slate-300 sheet:border-t-orange-500"
+      class="sheet mx-auto flex w-full max-w-(--sheet-max) flex-col rounded-2xl bg-white shadow-2xl sheet:min-h-(--sheet-h)"
     >
       <!-- 报头 -->
       <header
-        class="flex flex-col gap-3 border-b border-slate-300 px-5 pt-7 pb-5 sheet:flex-row sheet:items-end sheet:justify-between sheet:gap-10 sheet:px-[11mm] sheet:pt-[5.5mm] sheet:pb-[4mm]"
+        class="flex flex-col gap-3 border-b border-gray-200 px-5 pt-7 pb-5 sheet:flex-row sheet:items-end sheet:justify-between sheet:gap-10 sheet:ps-6 sheet:pe-6 sheet:pt-5 sheet:pb-4"
       >
-        <div>
-          <p class="text-(length:--fs-eyebrow) uppercase tracking-[0.3em] text-orange-600">
-            {profile.kicker} · A 5-Minute Intro
+        <div class="flex-0">
+          <p class="text-sm text-primary-600">
+            {profile.kicker}
           </p>
           <h1 class="mt-2 flex items-baseline gap-2.5 sheet:mt-1.5">
             <span
-              class="font-serif text-(length:--fs-display) leading-none tracking-tight text-slate-900"
+              class="text-(length:--fs-display) leading-none tracking-tight text-gray-900"
               >{profile.name}</span
             >
-            <span class="text-(length:--fs-sep) leading-none text-slate-300">／</span>
-            <span class="text-(length:--fs-alias) leading-none font-medium text-slate-600"
+            <span class="text-(length:--fs-sep) leading-none text-gray-300"
+              >／</span
+            >
+            <span
+              class="text-(length:--fs-alias) leading-none font-medium text-gray-600"
               >{profile.alias}</span
             >
           </h1>
         </div>
-        <div class="max-w-[96mm] space-y-1 sheet:space-y-[1mm]">
+        <div class="flex-1 space-y-1">
           <p
             class:list={[
-              "text-(length:--fs-lede) leading-relaxed",
-              isPlaceholder(profile.tagline) ? "ph" : "text-slate-600",
+              "text-(length:--fs-lede) leading-relaxed text-end",
+              isPlaceholder(profile.tagline) ? "ph" : "text-gray-600",
             ]}
           >
             {profile.tagline}
           </p>
-          <p class="text-(length:--fs-motto) text-sky-700/80">
+          <p class="text-(length:--fs-motto) text-accent-700/80 text-end">
             {profile.motto}{" "}
-            <span class="text-slate-400">— GitHub bio</span>
+            <span class="text-gray-400">- GitHub bio</span>
           </p>
         </div>
       </header>
@@ -63,23 +69,23 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
       >
         <!-- 侧栏 · 上半：头像与状态 -->
         <aside
-          class="border-b border-slate-200 bg-orange-50/50 px-5 py-6 sheet:col-start-1 sheet:row-start-1 sheet:border-b-0 sheet:border-r sheet:px-[7mm] sheet:pt-[var(--pad-y)] sheet:pb-0"
+          class="border-b border-gray-200 px-5 py-6 sheet:col-start-1 sheet:row-start-1 sheet:border-b-0 sheet:border-r sheet:px-6 sheet:pt-(--pad-y) sheet:pb-0"
         >
           {
             profile.avatar ? (
               <img
                 src={profile.avatar}
                 alt={profile.name}
-                class="aspect-square w-[110px] rounded-sm border border-orange-200 object-cover sheet:w-[28mm]"
-              />
+                class="aspect-square w-24 rounded-xl object-cover sheet:w-26"
+             />
             ) : (
-              <div class="grid aspect-square w-[110px] place-items-center rounded-sm border border-dashed border-orange-300 bg-orange-100/50 text-(length:--fs-label) tracking-[0.2em] text-orange-700/70 uppercase sheet:w-[28mm]">
+              <div class="grid aspect-square w-24 place-items-center rounded-sm border border-dashed border-primary-300 bg-primary-100/50 text-(length:--fs-label) tracking-[0.2em] text-primary-700/70 sheet:w-26">
                 Avatar
               </div>
             )
           }
 
-          <dl class="mt-5 space-y-2.5 sheet:mt-[5mm] sheet:space-y-[3mm]">
+          <dl class="mt-5 space-y-2.5 sheet:space-y-3">
             {
               now.map((row) => (
                 <div>
@@ -89,7 +95,7 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
                   <dd
                     class:list={[
                       "mt-0.5 text-(length:--fs-side) leading-snug",
-                      isPlaceholder(row.value) ? "ph" : "text-slate-700",
+                      isPlaceholder(row.value) ? "ph" : "text-gray-700",
                     ]}
                   >
                     {row.value}
@@ -102,17 +108,17 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
 
         <!-- 主内容 -->
         <main
-          class="flex flex-col gap-6 px-5 py-6 sheet:col-start-2 sheet:row-span-2 sheet:row-start-1 sheet:justify-between sheet:gap-[7mm] sheet:px-[8mm] sheet:py-[var(--pad-y)]"
+          class="flex flex-col gap-6 px-5 py-6 sheet:col-start-2 sheet:row-span-2 sheet:row-start-1 sheet:justify-between sheet:gap-6 sheet:px-8 sheet:py-8 sheet:py-(--pad-y)"
         >
           <section>
-            <SectionHeading title="我是谁" label="Who" />
-            <div class="mt-2.5 space-y-1.5 sheet:mt-[2.5mm] sheet:space-y-[1.5mm]">
+            <SectionHeading title="我是谁" />
+            <div class="mt-2.5 space-y-1.5">
               {
                 about.map((line) => (
                   <p
                     class:list={[
                       "text-(length:--fs-body) leading-relaxed",
-                      isPlaceholder(line) ? "ph" : "text-slate-700",
+                      isPlaceholder(line) ? "ph" : "text-gray-700",
                     ]}
                   >
                     {line}
@@ -123,33 +129,33 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
           </section>
 
           <section>
-            <SectionHeading title="最近在做什么" label="Now" />
-            <div
-              class="mt-3 grid gap-4 sheet:mt-[3mm] sheet:grid-cols-2 sheet:gap-x-[7mm] sheet:gap-y-[6mm]"
-            >
+            <SectionHeading title="最近在做什么" />
+            <div class="mt-4 grid gap-4 sheet:grid-cols-2 sheet:gap-6">
               {
                 projects.map((project) => (
-                  <article class="border-l-2 border-orange-200 pl-3 sheet:pl-[3mm]">
-                    <div class="flex items-baseline gap-2">
-                      <h3 class="text-(length:--fs-item-title) font-semibold text-slate-900">
+                  <article class="border-l-2 border-primary-200 pl-4">
+                    <div class="flex items-baseline gap-3">
+                      <h3 class="text-(length:--fs-item-title) font-semibold text-gray-900">
                         {project.title}
                       </h3>
-                      <span class="text-(length:--fs-kind) tracking-[0.12em] text-sky-700 uppercase">
+                      <span class="text-(length:--fs-kind) tracking-[0.12em] text-accent-700">
                         {project.kind}
                       </span>
                     </div>
                     <p
                       class:list={[
-                        "mt-1 text-(length:--fs-item) leading-relaxed sheet:mt-[1mm]",
-                        isPlaceholder(project.summary) ? "ph" : "text-slate-700",
+                        "mt-1 text-(length:--fs-item) leading-relaxed",
+                        isPlaceholder(project.summary)
+                          ? "ph"
+                          : "text-gray-700",
                       ]}
                     >
                       {project.summary}
                     </p>
                     <p
                       class:list={[
-                        "mt-0.5 text-(length:--fs-detail) leading-relaxed",
-                        isPlaceholder(project.detail) ? "ph" : "text-slate-500",
+                        "mt-2 text-(length:--fs-detail) leading-relaxed",
+                        isPlaceholder(project.detail) ? "ph" : "text-gray-500",
                       ]}
                     >
                       {project.detail}
@@ -161,20 +167,20 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
           </section>
 
           <div
-            class="flex flex-col gap-6 sheet:grid sheet:grid-cols-[1fr_auto_1fr] sheet:gap-0"
+            class="flex flex-col gap-6 sheet:grid sheet:grid-cols-[1fr_1fr] sheet:gap-0"
           >
             <section>
-              <SectionHeading title="技术方向" label="Stack" tone="accent" />
-              <div class="mt-3 space-y-2.5 sheet:mt-[3mm] sheet:space-y-[5mm]">
+              <SectionHeading title="技术方向" />
+              <div class="mt-4 space-y-2.5 sheet:space-y-5">
                 {
                   stack.map((group) => (
                     <div>
-                      <p class="text-(length:--fs-label) tracking-[0.16em] text-slate-400 uppercase">
+                      <p class="text-(length:--fs-label) tracking-[0.16em] text-gray-400">
                         {group.group}
                       </p>
-                      <ul class="mt-1.5 flex flex-wrap gap-1.5 sheet:mt-[1.5mm] sheet:gap-1">
+                      <ul class="mt-1.5 flex flex-wrap gap-1.5 sheet:gap-1">
                         {group.items.map((item) => (
-                          <li class="rounded-[2px] border border-sky-200 bg-sky-50/70 px-1.5 py-0.5 text-(length:--fs-tag) text-sky-800 sheet:px-1">
+                          <li class="rounded-md border border-primary-200 bg-primary-50/70 px-2 py-0.5 text-(length:--fs-tag) text-gray-800">
                             {item}
                           </li>
                         ))}
@@ -184,16 +190,13 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
                 }
               </div>
             </section>
-
-            <div class="hidden sheet:mx-[7mm] sheet:block sheet:w-px sheet:bg-slate-200"></div>
-
             <section>
-              <SectionHeading title="适合和我聊" label="Topics" tone="accent" />
-              <ol class="mt-3 space-y-1.5 sheet:mt-[3mm] sheet:space-y-[3.5mm]">
+              <SectionHeading title="适合和我聊" />
+              <ol class="mt-4 space-y-1.5 sheet:space-y-3.5">
                 {
                   topics.map((topic, index) => (
-                    <li class="flex gap-2 text-(length:--fs-item) leading-snug text-slate-700 sheet:gap-[2mm]">
-                      <span class="shrink-0 pt-px font-mono text-(length:--fs-num) text-orange-500">
+                    <li class="flex gap-2 text-(length:--fs-item) leading-snug text-gray-700">
+                      <span class="shrink-0 pt-px font-mono text-(length:--fs-num) text-primary-500">
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       <span>{topic}</span>
@@ -207,22 +210,24 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
 
         <!-- 侧栏 · 下半：联系方式与网络身份 -->
         <aside
-          class="border-t border-slate-200 bg-orange-50/50 px-5 py-6 sheet:col-start-1 sheet:row-start-2 sheet:flex sheet:flex-col sheet:border-t-0 sheet:border-r sheet:border-slate-200 sheet:px-[7mm] sheet:pt-[var(--gap-side)] sheet:pb-[var(--pad-y)]"
+          class="border-t border-gray-200 px-5 py-6 sheet:col-start-1 sheet:row-start-2 sheet:flex sheet:flex-col sheet:border-t-0 sheet:border-r sheet:border-gray-200 sheet:px-6 sheet:pt-(--gap-side) sheet:pb-(--pad-y)"
         >
-          <div class="space-y-5 sheet:flex sheet:h-full sheet:flex-col sheet:justify-between sheet:gap-[var(--gap-side)] sheet:space-y-0">
+          <div
+            class="space-y-5 sheet:flex sheet:h-full sheet:flex-col sheet:justify-between sheet:gap-(--gap-side) sheet:space-y-0"
+          >
             <div>
-              <SectionHeading title="联系方式" label="Contact" />
-              <dl class="mt-2.5 space-y-1.5 sheet:mt-[2.5mm] sheet:space-y-[1.5mm]">
+              <SectionHeading title="联系方式" />
+              <dl class="mt-2.5 space-y-1.5">
                 {
                   contacts.map((row) => (
                     <div class="flex items-baseline gap-2">
-                      <dt class="w-[var(--w-label)] shrink-0 text-(length:--fs-label) tracking-[0.16em] text-slate-400 uppercase">
+                      <dt class="w-(--w-label) shrink-0 text-(length:--fs-label) tracking-[0.16em] text-gray-400">
                         {row.label}
                       </dt>
                       <dd
                         class:list={[
                           "text-(length:--fs-side) leading-snug",
-                          isPlaceholder(row.value) ? "ph" : "text-slate-700",
+                          isPlaceholder(row.value) ? "ph" : "text-gray-700",
                         ]}
                       >
                         {row.value}
@@ -234,12 +239,12 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
             </div>
 
             <div>
-              <SectionHeading title="互联网身份" label="Online" tone="accent" />
-              <dl class="mt-2.5 space-y-1.5 sheet:mt-[2.5mm] sheet:space-y-[1.5mm]">
+              <SectionHeading title="互联网身份" />
+              <dl class="mt-2.5 space-y-1.5">
                 {
                   identities.map((row) => (
                     <div class="flex items-baseline gap-2">
-                      <dt class="w-[var(--w-label)] shrink-0 text-(length:--fs-label) tracking-[0.16em] text-slate-400 uppercase">
+                      <dt class="w-(--w-label) shrink-0 text-(length:--fs-label) tracking-[0.16em] text-gray-400">
                         {row.label}
                       </dt>
                       <dd class="text-(length:--fs-side) leading-snug">
@@ -247,7 +252,7 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
                           href={row.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          class="text-sky-800 underline decoration-sky-300 underline-offset-2 transition-colors hover:text-sky-600 hover:decoration-sky-500"
+                          class="text-primary-800 underline decoration-primary-300 underline-offset-2 transition-colors hover:text-primary-600 hover:decoration-primary-500"
                         >
                           {row.value}
                         </a>
@@ -259,18 +264,18 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
             </div>
 
             <div>
-              <SectionHeading title="其他" label="Misc" />
-              <dl class="mt-2.5 space-y-2 sheet:mt-[2.5mm] sheet:space-y-[2mm]">
+              <SectionHeading title="其他" />
+              <dl class="mt-2.5 space-y-2">
                 {
                   misc.map((row) => (
                     <div>
-                      <dt class="text-(length:--fs-label) tracking-[0.16em] text-slate-400 uppercase">
+                      <dt class="text-(length:--fs-label) tracking-[0.16em] text-gray-400">
                         {row.label}
                       </dt>
                       <dd
                         class:list={[
                           "mt-0.5 text-(length:--fs-side) leading-snug",
-                          isPlaceholder(row.value) ? "ph" : "text-slate-700",
+                          isPlaceholder(row.value) ? "ph" : "text-gray-700",
                         ]}
                       >
                         {row.value}
@@ -286,21 +291,20 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
 
       <!-- 页脚 -->
       <footer
-        class="flex items-center justify-between gap-4 border-t border-slate-300 px-5 py-4 text-(length:--fs-micro) text-slate-400 sheet:px-[11mm] sheet:py-[2.5mm]"
+        class="flex items-center justify-between gap-4 border-t border-gray-200 px-5 py-4 text-(length:--fs-micro) text-gray-400 sheet:px-6 sheet:py-2.5"
       >
-        <p class="tracking-[0.14em] uppercase">
-          {profile.site} · Updated {profile.updatedAt}
+        <p class="tracking-[0.14em]">
+          &copy; {new Date().getFullYear()} tcdw | Updated {profile.updatedAt}
         </p>
-        <div class="flex items-center gap-4">
-          <p class="hidden tracking-[0.14em] uppercase sheet:block">A4 Landscape · Single Page</p>
-          <button
-            type="button"
-            onclick="window.print()"
-            class="cursor-pointer rounded-[2px] border border-slate-300 px-2 py-0.5 tracking-[0.14em] text-slate-500 uppercase transition-colors hover:border-orange-300 hover:text-orange-700 print:hidden"
-          >
-            打印 / PDF
-          </button>
-        </div>
+        <!--<div class="flex items-center gap-4">-->
+        <!--  <button-->
+        <!--    type="button"-->
+        <!--    onclick="window.print()"-->
+        <!--    class="cursor-pointer rounded-xs border border-gray-200 px-2 py-0.5 tracking-[0.14em] text-gray-500 transition-colors hover:border-primary-300 hover:text-primary-700 print:hidden"-->
+        <!--  >-->
+        <!--    打印 / PDF-->
+        <!--  </button>-->
+        <!--</div>-->
       </footer>
     </div>
   </body>

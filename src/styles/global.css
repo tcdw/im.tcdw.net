@@ -14,6 +14,43 @@
   }
 }
 
+@theme {
+  --font-sans: ChillRoundF, -apple-system, "Microsoft YaHei", sans-serif;
+
+  --color-primary-50: var(--color-sky-50);
+  --color-primary-100: var(--color-sky-100);
+  --color-primary-200: var(--color-sky-200);
+  --color-primary-300: var(--color-sky-300);
+  --color-primary-400: var(--color-sky-400);
+  --color-primary-500: var(--color-sky-500);
+  --color-primary-600: var(--color-sky-600);
+  --color-primary-700: var(--color-sky-700);
+  --color-primary-800: var(--color-sky-800);
+  --color-primary-900: var(--color-sky-900);
+  --color-primary-950: var(--color-sky-950);
+
+  --color-accent-50: var(--color-amber-50);
+  --color-accent-100: var(--color-amber-100);
+  --color-accent-200: var(--color-amber-200);
+  --color-accent-300: var(--color-amber-300);
+  --color-accent-400: var(--color-amber-400);
+  --color-accent-500: var(--color-amber-500);
+  --color-accent-600: var(--color-amber-600);
+  --color-accent-700: var(--color-amber-700);
+  --color-accent-800: var(--color-amber-800);
+  --color-accent-900: var(--color-amber-900);
+  --color-accent-950: var(--color-amber-950);
+}
+
+/*
+ * 纸张尺寸。整个页面里只有这里用毫米：A4 横向就是一个「容器大小」，
+ * 版心内部的间距、字号一律用 px，方便和 Tailwind 的间距刻度对齐。
+ */
+:root {
+  --sheet-w: 297mm;
+  --sheet-h: 210mm;
+}
+
 /*
  * 字号与若干尺寸的三套取值：移动端 / 宽屏 / 打印。
  * 宽屏和打印共用同一套「多栏档案纸」布局（见上面的 sheet variant），
@@ -41,10 +78,10 @@
   --fs-micro: 10.5px;
 
   --w-label: 60px;
-  --col-side: 62mm;
-  --sheet-max: 297mm;
-  --pad-y: 5mm;
-  --gap-side: 5mm;
+  --col-side: 234px;
+  --sheet-max: var(--sheet-w);
+  --pad-y: 20px;
+  --gap-side: 20px;
 }
 
 @media screen and (width >= 64rem) {
@@ -58,7 +95,7 @@
     --fs-lede: 15.5px;
     --fs-motto: 13px;
     --fs-body: 15.5px;
-    --fs-item-title: 15.5px;
+    --fs-item-title: 16px;
     --fs-kind: 10px;
     --fs-item: 14.5px;
     --fs-side: 14.5px;
@@ -69,10 +106,10 @@
     --fs-micro: 11px;
 
     --w-label: 76px;
-    --col-side: 76mm;
+    --col-side: 288px;
     --sheet-max: 1240px;
-    --pad-y: 6mm;
-    --gap-side: 7mm;
+    --pad-y: 24px;
+    --gap-side: 28px;
   }
 }
 
@@ -97,11 +134,11 @@
     --fs-num: 8.5px;
     --fs-micro: 8.5px;
 
-    --w-label: 16mm;
-    --col-side: 62mm;
+    --w-label: 60px;
+    --col-side: 234px;
     /* 打印时高度预算很紧，这两个值是塞进一张 A4 的关键，别随手放大 */
-    --pad-y: 3.5mm;
-    --gap-side: 2mm;
+    --pad-y: 12px;
+    --gap-side: 8px;
   }
 }
 
@@ -130,14 +167,16 @@ html {
     background: #fff;
   }
 
-  /* 严格一页：内容必须控制在 210mm 内，超出会被裁掉 */
+  /* 严格一页：内容必须控制在 --sheet-h 内，超出会被裁掉 */
   .sheet {
-    width: 297mm;
-    height: 210mm;
+    width: var(--sheet-w);
+    height: var(--sheet-h);
     max-width: none;
     min-height: 0;
     margin: 0;
     border: 0;
+    border-radius: 0;
+    box-shadow: none;
     overflow: hidden;
   }
 }

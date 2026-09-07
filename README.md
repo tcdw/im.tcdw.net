@@ -57,8 +57,11 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
   （见 `src/styles/global.css`），所以打印时不会意外落回移动端单栏布局。
 - 字号与部分尺寸走 CSS 变量（`--fs-*`、`--pad-y` 等），在 `src/styles/global.css` 里分
   「移动端 / 宽屏 / 打印」三套取值：屏幕上是正常阅读字号，只有打印时才收紧到能塞进一张 A4。
-  想调排版密度改那里就够了，模板里没有写死的 px。
-- 打印版是严格的一页，内容高度上限约 210mm；写内容时留意别把某个 section 撑得太长。
+  想调排版密度改那里就够了。
+- 单位约定：毫米只出现在 `--sheet-w` / `--sheet-h`（= A4 横向）和 `@page` 里，A4 只是一个
+  「容器大小」。版心内部一律用 px，尽量落在 Tailwind 的间距刻度上（`px-10`、`gap-6`……），
+  别再往模板里写 `mm`。
+- 打印版是严格的一页，内容高度上限就是 `--sheet-h`；写内容时留意别把某个 section 撑得太长。
 
 ## 代码风格
 
