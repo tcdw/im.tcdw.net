@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import { Icon } from 'astro-icon/components';
 import SectionHeading from '../components/SectionHeading.astro';
-import { about, contacts, identities, misc, now, profile, projects, stack, topics } from '../data/profile';
+import { about, contacts, identities, now, profile, projects, stack, topics } from '../data/profile';
 
 /** 以「待补充」开头的文字按占位样式渲染 */
 const isPlaceholder = (text: string) => text.startsWith('待补充');
@@ -259,29 +259,6 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
                         >
                           {row.value}
                         </a>
-                      </dd>
-                    </div>
-                  ))
-                }
-              </dl>
-            </div>
-
-            <div>
-              <SectionHeading title="其他" />
-              <dl class="mt-2.5 space-y-2">
-                {
-                  misc.map((row) => (
-                    <div>
-                      <dt class="text-(length:--fs-label) tracking-[0.16em] text-secondary-400">
-                        {row.label}
-                      </dt>
-                      <dd
-                        class:list={[
-                          "mt-0.5 text-(length:--fs-side) leading-snug",
-                          isPlaceholder(row.value) ? "ph" : "text-secondary-700",
-                        ]}
-                      >
-                        {row.value}
                       </dd>
                     </div>
                   ))

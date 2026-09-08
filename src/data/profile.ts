@@ -104,9 +104,3 @@ export const topics = [
   'Homelab、二手硬件与自建服务',
   '游戏 OST、SNES 音乐与 16-bit 编曲',
 ];
-
-/** 其他个人信息 */
-export const misc = [
-  { label: '生活', value: '咖啡店探店、城市与铁道摄影、《蔚蓝档案》谷子' },
-  { label: '音乐', value: '常听 J-Pop，偶尔把游戏 OST 做成 16-bit 编曲' },
-];
