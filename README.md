@@ -49,6 +49,9 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 
 - 内容全部集中在 `src/data/profile.ts`（资料来自博客仓库与 GitHub，文件顶部有来源说明），以「待补充」开头的字符串会以浅色占位样式渲染，
   直接替换文字即可，无需改动模板。
+- 图标：`astro-icon`，两套图标集按角色分工——品牌 mark 用 Simple Icons（`simple-icons:github`），
+  通用 UI 图标用 Remix Icon（`ri:mail-line`）。图标名写在 `profile.ts` 的 `icon` 字段里，
+  模板用 `<Icon name={row.icon} class="size-[1.15em]" />` 渲染，跟着字号缩放。换图标只改数据文件。
 - 头像：`public/avatar.png`（从博客仓库 `src/assets/avatar.png` 复制并缩放到 512px）。
   换头像就替换这个文件，或改 `profile.avatar` 指向别的路径。
 - 打印：页面右下角的「打印 / PDF」按钮，或浏览器打印。`@page` 已固定为 A4 横向、零边距，

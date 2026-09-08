@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { Icon } from 'astro-icon/components';
 import SectionHeading from '../components/SectionHeading.astro';
 import { about, contacts, identities, misc, now, profile, projects, stack, topics } from '../data/profile';
 
@@ -217,12 +218,13 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
           >
             <div>
               <SectionHeading title="联系方式" />
-              <dl class="mt-2.5 space-y-1.5">
+              <dl class="mt-2.5 space-y-2">
                 {
                   contacts.map((row) => (
-                    <div class="flex items-baseline gap-2">
-                      <dt class="w-(--w-label) shrink-0 text-(length:--fs-label) tracking-[0.16em] text-secondary-400">
-                        {row.label}
+                    <div class="flex items-center gap-2.5">
+                      <dt class="shrink-0 text-(length:--fs-side) text-secondary-400">
+                        <Icon name={row.icon} class="size-[1.15em]" />
+                        <span class="sr-only">{row.label}</span>
                       </dt>
                       <dd
                         class:list={[
@@ -240,12 +242,13 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
 
             <div>
               <SectionHeading title="互联网身份" />
-              <dl class="mt-2.5 space-y-1.5">
+              <dl class="mt-2.5 space-y-2">
                 {
                   identities.map((row) => (
-                    <div class="flex items-baseline gap-2">
-                      <dt class="w-(--w-label) shrink-0 text-(length:--fs-label) tracking-[0.16em] text-secondary-400">
-                        {row.label}
+                    <div class="flex items-center gap-2.5">
+                      <dt class="shrink-0 text-(length:--fs-side) text-secondary-400">
+                        <Icon name={row.icon} class="size-[1.15em]" />
+                        <span class="sr-only">{row.label}</span>
                       </dt>
                       <dd class="text-(length:--fs-side) leading-snug">
                         <a

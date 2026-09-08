@@ -89,7 +89,6 @@
   --fs-num: 10.5px;
   --fs-micro: 10.5px;
 
-  --w-label: 60px;
   --col-side: 234px;
   --sheet-max: var(--sheet-w);
   --pad-y: 20px;
@@ -117,7 +116,6 @@
     --fs-num: 11px;
     --fs-micro: 11px;
 
-    --w-label: 76px;
     --col-side: 288px;
     --sheet-max: 1240px;
     --pad-y: 24px;
@@ -146,7 +144,6 @@
     --fs-num: 8.5px;
     --fs-micro: 8.5px;
 
-    --w-label: 60px;
     --col-side: 234px;
     /* 打印时高度预算很紧，这两个值是塞进一张 A4 的关键，别随手放大 */
     --pad-y: 12px;

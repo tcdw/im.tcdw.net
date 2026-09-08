@@ -44,17 +44,17 @@ export const now = [
 
 /** 联系方式：没有在公开渠道确认过的一律留占位，不要猜 */
 export const contacts = [
-  { label: 'Email', value: 'tcdw2011@gmail.com' },
-  { label: 'Telegram', value: 'tcdwww' },
+  { label: 'Email', value: 'tcdw2011@gmail.com', icon: 'ri:mail-fill' },
+  { label: 'Telegram', value: 'tcdwww', icon: 'simple-icons:telegram' },
 ];
 
 /** 互联网身份 */
 export const identities = [
-  { label: 'GitHub', value: '@tcdw', href: 'https://github.com/tcdw' },
-  { label: 'X', value: '@tcdwww', href: 'https://x.com/tcdwww' },
-  { label: 'YouTube', value: '@tcdwww', href: 'https://youtube.com/@tcdwww' },
-  { label: 'Bluesky', value: 'tcdw.net', href: 'https://bsky.app/profile/tcdw.net' },
-  { label: 'Blog', value: 'www.tcdw.net', href: 'https://www.tcdw.net/' },
+  { label: 'GitHub', value: '@tcdw', href: 'https://github.com/tcdw', icon: 'simple-icons:github' },
+  { label: 'X', value: '@tcdwww', href: 'https://x.com/tcdwww', icon: 'simple-icons:x' },
+  { label: 'YouTube', value: '@tcdwww', href: 'https://youtube.com/@tcdwww', icon: 'simple-icons:youtube' },
+  { label: 'Bluesky', value: 'tcdw.net', href: 'https://bsky.app/profile/tcdw.net', icon: 'simple-icons:bluesky' },
+  { label: 'Blog', value: 'www.tcdw.net', href: 'https://www.tcdw.net/', icon: 'ri:global-line' },
 ];
 
 /** 最近在做什么 */
