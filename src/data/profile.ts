@@ -107,7 +107,6 @@ export const topics = [
 
 /** 其他个人信息 */
 export const misc = [
-  { label: '也做过', value: 'koi（Astro 博客模板）、Minecraft 文本编辑器、碗橱 CMS' },
   { label: '生活', value: '咖啡店探店、城市与铁道摄影、《蔚蓝档案》谷子' },
   { label: '音乐', value: '常听 J-Pop，偶尔把游戏 OST 做成 16-bit 编曲' },
 ];
