@@ -73,7 +73,7 @@ export const projects: Profile[] = [
     kind: 'Telegram / Agent',
     summary: '跑在 Telegram 私聊、群组和 Forum Topic 里的 Agent Bot。',
     detail:
-      '按固定时间窗口把消息聚成 bucket，构造受限上下文，让模型自己决定要不要开口。所有副作用必须走显式 Tool Call。基于 Bun + Pi Agent Framework + 自制调度引擎。',
+      '按固定时间窗口把消息整合成 bucket，构造受限上下文，让模型自己决定要不要开口。所有副作用必须走显式 Tool Call。基于 Bun + Pi Agent Framework + 自制调度引擎。',
   },
   {
     title: '雪乃碗 / Yukino Wan',
@@ -88,14 +88,14 @@ export const projects: Profile[] = [
     url: 'https://bilisound.com',
     kind: 'App / React Native',
     summary: '基于 React Native (Expo) 的 Bilisound 移动客户端。',
-    detail: '支持 Android 7.1+ / iOS 17+，适配折叠屏与平板，有合集、歌单与后台播放。。',
+    detail: '支持 Android 7.1+ / iOS 17+，适配折叠屏与平板，有合集、歌单与后台播放功能。',
   },
   {
     title: 'AI Coding / Agent Harness',
     kind: '长期探索',
     summary: '从 AI 辅助编程一路折腾到 Vibe Coding，还在继续。',
     detail:
-      '长期探索 Coding Agent、Vibe Coding 与 AI 编程，关注的不只是「让 AI 写代码」，也在持续实践 Harness、Skills、上下文工程以及人与 Agent 的协作方式。\n',
+      '长期探索 Coding Agent、Vibe Coding 与 AI 编程，关注的不只是「让 AI 写代码」，也在持续实践 Harness、Skills、上下文工程以及人与 Agent 的协作方式。',
   },
 ];
 

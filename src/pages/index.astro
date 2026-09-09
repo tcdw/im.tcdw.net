@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
+import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
+import corner from '../assets/corner.jpg';
 import SectionHeading from '../components/SectionHeading.astro';
 import { about, contacts, identities, now, profile, projects, stack } from '../data/profile';
 
@@ -24,8 +26,18 @@ const printableUrl = (url: string) => url.replace(/^https?:\/\//, '').replace(/\
 
   <body class="bg-secondary-100/70 text-secondary-700 sheet:p-10">
     <div
-      class="sheet mx-auto flex w-full max-w-(--sheet-max) flex-col rounded-2xl bg-white shadow-2xl sheet:min-h-(--sheet-h)"
+      class="sheet relative isolate mx-auto flex w-full max-w-(--sheet-max) flex-col overflow-hidden rounded-2xl bg-white shadow-2xl sheet:min-h-(--sheet-h)"
     >
+      <!-- 右下角的装饰画：isolate + -z-10 让它压在白底之上、正文之下 -->
+      <Image
+        src={corner}
+        alt=""
+        aria-hidden="true"
+        width={300}
+        height={400}
+        densities={[1, 2]}
+        class="pointer-events-none absolute right-4 bottom-12 -z-10 w-60 opacity-10 sheet:w-75"
+      />
       <!-- 报头 -->
       <header
         class="flex flex-col gap-3 border-b border-secondary-200 px-5 pt-7 pb-5 sheet:flex-row sheet:items-end sheet:justify-between sheet:gap-10 sheet:ps-6 sheet:pe-6 sheet:pt-5 sheet:pb-4"
