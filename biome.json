@@ -5,8 +5,8 @@
     "includes": [
       "**",
       "!!**/node_modules",
-      "!!**/dist",
       "!!**/.astro",
+      "!!**/dist",
       "!!**/*.tsbuildinfo",
       "!!pnpm-lock.yaml",
       "!!public"
@@ -36,6 +36,12 @@
       "quoteStyle": "single",
       "semicolons": "always",
       "trailingCommas": "all"
+    }
+  },
+  "html": {
+    "experimentalFullSupportEnabled": true,
+    "formatter": {
+      "enabled": true
     }
   },
   "css": {

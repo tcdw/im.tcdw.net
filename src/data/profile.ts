@@ -30,7 +30,7 @@ export const profile = {
 export const about = [
   '写 Web 前端，也写 React Native (Expo) 移动端。博客「吐槽大王部落格」建于 2012 年，一路写到现在。',
   '喜欢观察城市、喜欢工业之美。是普通人，希望与你交朋友！',
-  '这两年重心慢慢移到了生成式 AI 与 Agent 上：自己写 Telegram Agent、养一个人设，也在持续折腾 AI Coding 工具链。',
+  '如今正在尝试转型为懂 Agent 开发的全栈工程师……',
 ];
 
 /** 现在（sidebar 顶部的短状态） */
@@ -53,38 +53,49 @@ export const identities = [
   { label: 'GitHub', value: '@tcdw', href: 'https://github.com/tcdw', icon: 'simple-icons:github' },
   { label: 'X', value: '@tcdwww', href: 'https://x.com/tcdwww', icon: 'simple-icons:x' },
   { label: 'YouTube', value: '@tcdwww', href: 'https://youtube.com/@tcdwww', icon: 'simple-icons:youtube' },
-  { label: 'Bluesky', value: 'tcdw.net', href: 'https://bsky.app/profile/tcdw.net', icon: 'simple-icons:bluesky' },
+  { label: 'Bluesky', value: '@tcdw.net', href: 'https://bsky.app/profile/tcdw.net', icon: 'simple-icons:bluesky' },
   { label: 'Blog', value: 'www.tcdw.net', href: 'https://www.tcdw.net/', icon: 'ri:global-line' },
 ];
 
+export interface Profile {
+  title: string;
+  url?: string;
+  kind: string;
+  summary: string;
+  detail: string;
+}
+
 /** 最近在做什么 */
-export const projects = [
+export const projects: Profile[] = [
   {
     title: '塑料碗',
+    url: 'https://github.com/tcdw/plastic-wan',
     kind: 'Telegram / Agent',
     summary: '跑在 Telegram 私聊、群组和 Forum Topic 里的 Agent Bot。',
     detail:
-      '按固定时间窗口把消息聚成 bucket，构造受限上下文，让模型自己决定要不要开口——私聊积极、群聊克制。所有副作用必须走显式 Tool Call。Bun + TypeScript。',
+      '按固定时间窗口把消息聚成 bucket，构造受限上下文，让模型自己决定要不要开口。所有副作用必须走显式 Tool Call。基于 Bun + Pi Agent Framework + 自制调度引擎。',
   },
   {
     title: '雪乃碗 / Yukino Wan',
+    url: 'https://yukinowan.com',
     kind: '人设 / 生成式 AI',
     summary: '27 岁（外观 22 岁）、165cm 的白毛高马尾 IT 工程师，橙色连帽衫配黑色高领。',
     detail:
-      '废萌外表下是硬核从业者，信奉高可用与极简，爱好是 Homelab、开源大模型和坐火车。围绕她有一整套 AI 生图工作流、GUI 工具，以及贴纸站 yukinowan.com。',
+      '废萌外表下是硬核从业者，信奉高可用与极简，爱好是 Homelab、开源大模型和坐火车。围绕她有一整套 AI 生图工作流、GUI 工具，以及贴纸站。',
   },
   {
     title: 'Bilisound',
+    url: 'https://bilisound.com',
     kind: 'App / React Native',
     summary: '基于 React Native (Expo) 的 Bilisound 移动客户端。',
-    detail: '支持 Android 7.1+ / iOS 17+，适配折叠屏与平板，有合集、歌单与后台播放。项目主页 app.bilisound.com。',
+    detail: '支持 Android 7.1+ / iOS 17+，适配折叠屏与平板，有合集、歌单与后台播放。。',
   },
   {
     title: 'AI Coding / Agent Harness',
     kind: '长期探索',
-    summary: '从「AI 辅助编程」一路折腾到 Vibe Coding，还在继续。',
+    summary: '从 AI 辅助编程一路折腾到 Vibe Coding，还在继续。',
     detail:
-      '顺手做了 opencode-profile（多 Profile 切换）、mini-ai-gateway（自家云上的 AI Gateway）这类自用小工具，也关心上下文构造与工具边界怎么划。',
+      '长期探索 Coding Agent、Vibe Coding 与 AI 编程，关注的不只是「让 AI 写代码」，也在持续实践 Harness、Skills、上下文工程以及人与 Agent 的协作方式。\n',
   },
 ];
 
@@ -93,14 +104,4 @@ export const stack = [
   { group: '日常主力', items: ['TypeScript', 'React', 'React Native / Expo', 'Node.js / Bun'] },
   { group: 'AI 方向', items: ['AI Agent', 'LLM Harness', '生成式 AI'] },
   { group: '辅助方向', items: ['Astro', 'Backend', 'Infra', 'Self-hosting'] },
-];
-
-/** 适合和我聊的话题（从上面的项目、博客与兴趣推导，可自行增删改） */
-export const topics = [
-  '怎么让群聊里的 Agent 学会「克制地」开口',
-  'React Native / Expo 的实际开发体验与踩坑',
-  '从 AI 辅助编程到 Vibe Coding 的心态转变',
-  '用生成式 AI 养一个有一致性的人设',
-  'Homelab、二手硬件与自建服务',
-  '游戏 OST、SNES 音乐与 16-bit 编曲',
 ];

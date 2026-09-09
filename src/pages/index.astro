@@ -2,23 +2,23 @@
 import '../styles/global.css';
 import { Icon } from 'astro-icon/components';
 import SectionHeading from '../components/SectionHeading.astro';
-import { about, contacts, identities, now, profile, projects, stack, topics } from '../data/profile';
+import { about, contacts, identities, now, profile, projects, stack } from '../data/profile';
 
 /** 以「待补充」开头的文字按占位样式渲染 */
 const isPlaceholder = (text: string) => text.startsWith('待补充');
+
+/** 协议头和末尾斜杠在纸上是噪音，打印时只留地址本体 */
+const printableUrl = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/$/, '');
 ---
 
 <html lang="zh-CN">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="generator" content={Astro.generator} />
-    <meta
-      name="description"
-      content="5 分钟了解 tcdw：我是谁、最近在做什么、技术方向，以及适合和我聊的话题。"
-   />
+    <meta charset="utf-8">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content={Astro.generator}>
+    <meta name="description" content="5 分钟了解 tcdw：我是谁、最近在做什么，以及主要的技术方向。">
     <title>5 分钟了解 tcdw</title>
   </head>
 
@@ -35,17 +35,11 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
             {profile.kicker}
           </p>
           <h1 class="mt-2 flex items-baseline gap-2.5 sheet:mt-1.5">
-            <span
-              class="text-(length:--fs-display) leading-none tracking-tight text-secondary-900"
+            <span class="text-(length:--fs-display) leading-none tracking-tight text-secondary-900"
               >{profile.name}</span
             >
-            <span class="text-(length:--fs-sep) leading-none text-secondary-300"
-              >／</span
-            >
-            <span
-              class="text-(length:--fs-alias) leading-none font-medium text-secondary-600"
-              >{profile.alias}</span
-            >
+            <span class="text-(length:--fs-sep) leading-none text-secondary-300">／</span>
+            <span class="text-(length:--fs-alias) leading-none font-medium text-secondary-600">{profile.alias}</span>
           </h1>
         </div>
         <div class="flex-1 space-y-1">
@@ -57,7 +51,7 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
           >
             {profile.tagline}
           </p>
-          <p class="text-(length:--fs-motto) text-accent-700/80 text-end">
+          <p class="text-(length:--fs-motto) text-primary-700/80 text-end">
             {profile.motto}{" "}
             <span class="text-secondary-400">- GitHub bio</span>
           </p>
@@ -65,15 +59,12 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
       </header>
 
       <!-- 主体 -->
-      <div
-        class="flex flex-1 flex-col sheet:grid sheet:grid-cols-[var(--col-side)_1fr] sheet:grid-rows-[auto_1fr]"
-      >
+      <div class="flex flex-1 flex-col sheet:grid sheet:grid-cols-[var(--col-side)_1fr] sheet:grid-rows-[auto_1fr]">
         <!-- 侧栏 · 上半：头像与状态 -->
         <aside
           class="border-b border-secondary-200 px-5 py-6 sheet:col-start-1 sheet:row-start-1 sheet:border-b-0 sheet:border-r sheet:px-6 sheet:pt-(--pad-y) sheet:pb-0"
         >
-          {
-            profile.avatar ? (
+          {profile.avatar ? (
               <img
                 src={profile.avatar}
                 alt={profile.name}
@@ -83,12 +74,10 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
               <div class="grid aspect-square w-24 place-items-center rounded-sm border border-dashed border-primary-300 bg-primary-100/50 text-(length:--fs-label) tracking-[0.2em] text-primary-700/70 sheet:w-26">
                 Avatar
               </div>
-            )
-          }
+            )}
 
           <dl class="mt-5 space-y-2.5 sheet:space-y-3">
-            {
-              now.map((row) => (
+            {now.map((row) => (
                 <div>
                   <dt class="text-(length:--fs-label) tracking-[0.16em] text-secondary-400 uppercase">
                     {row.label}
@@ -102,8 +91,7 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
                     {row.value}
                   </dd>
                 </div>
-              ))
-            }
+              ))}
           </dl>
         </aside>
 
@@ -114,8 +102,7 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
           <section>
             <SectionHeading title="我是谁" />
             <div class="mt-2.5 space-y-1.5">
-              {
-                about.map((line) => (
+              {about.map((line) => (
                   <p
                     class:list={[
                       "text-(length:--fs-body) leading-relaxed",
@@ -124,22 +111,29 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
                   >
                     {line}
                   </p>
-                ))
-              }
+                ))}
             </div>
           </section>
 
           <section>
             <SectionHeading title="最近在做什么" />
             <div class="mt-4 grid gap-4 sheet:grid-cols-2 sheet:gap-6">
-              {
-                projects.map((project) => (
+              {projects.map((project) => (
                   <article class="border-l-2 border-primary-200 pl-4">
                     <div class="flex items-baseline gap-3">
-                      <h3 class="text-(length:--fs-item-title) font-semibold text-secondary-900">
-                        {project.title}
+                      <h3 class="text-(length:--fs-item-title) font-semibold">
+                        {project.url ? (
+                          <a
+                            href={project.url}
+                            class="text-secondary-900 hover:text-primary-500 focus:text-primary-600 transition-colors duration-200"
+                          >
+                            {project.title}
+                          </a>
+                        ) : (
+                          <span class="text-secondary-900">{project.title}</span>
+                        )}
                       </h3>
-                      <span class="text-(length:--fs-kind) tracking-[0.12em] text-accent-700">
+                      <span class="text-(length:--fs-kind) tracking-[0.12em] text-primary-600">
                         {project.kind}
                       </span>
                     </div>
@@ -161,52 +155,45 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
                     >
                       {project.detail}
                     </p>
+                    {project.url && (
+                      <p class="mt-2">
+                        <a
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="inline-flex items-center gap-1 rounded-md border border-primary-200 px-2 py-0.5 text-(length:--fs-tag) text-primary-700 transition-colors duration-200 hover:border-primary-300 hover:bg-primary-50 hover:text-primary-800 print:rounded-none print:border-0 print:px-0 print:py-0"
+                        >
+                          <span class="print:hidden">了解更多</span>
+                          <Icon name="ri:arrow-right-up-line" class="size-[1.1em] print:hidden" />
+                          <!-- 纸上点不了，所以打印时把按钮换成可以照着敲的地址 -->
+                          <span class="hidden print:inline">{printableUrl(project.url)}</span>
+                        </a>
+                      </p>
+                    )}
                   </article>
-                ))
-              }
+                ))}
             </div>
           </section>
 
-          <div
-            class="flex flex-col gap-6 sheet:grid sheet:grid-cols-[1fr_1fr] sheet:gap-0"
-          >
-            <section>
-              <SectionHeading title="技术方向" />
-              <div class="mt-4 space-y-2.5 sheet:space-y-5">
-                {
-                  stack.map((group) => (
-                    <div>
-                      <p class="text-(length:--fs-label) tracking-[0.16em] text-secondary-400">
-                        {group.group}
-                      </p>
-                      <ul class="mt-1.5 flex flex-wrap gap-1.5 sheet:gap-1">
-                        {group.items.map((item) => (
-                          <li class="rounded-md border border-primary-200 bg-primary-50/70 px-2 py-0.5 text-(length:--fs-tag) text-secondary-800">
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))
-                }
-              </div>
-            </section>
-            <section>
-              <SectionHeading title="适合和我聊" />
-              <ol class="mt-4 space-y-1.5 sheet:space-y-3.5">
-                {
-                  topics.map((topic, index) => (
-                    <li class="flex gap-2 text-(length:--fs-item) leading-snug text-secondary-700">
-                      <span class="shrink-0 pt-px font-mono text-(length:--fs-num) text-primary-500">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <span>{topic}</span>
-                    </li>
-                  ))
-                }
-              </ol>
-            </section>
-          </div>
+          <section>
+            <SectionHeading title="技术方向" />
+            <div class="mt-4 space-y-2.5 sheet:space-y-5">
+              {stack.map((group) => (
+                  <div>
+                    <p class="text-(length:--fs-label) tracking-[0.16em] text-secondary-400">
+                      {group.group}
+                    </p>
+                    <ul class="mt-1.5 flex flex-wrap gap-1.5 sheet:gap-1">
+                      {group.items.map((item) => (
+                        <li class="rounded-md border border-primary-200 bg-primary-50/70 px-2 py-0.5 text-(length:--fs-tag) text-secondary-800">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+            </div>
+          </section>
         </main>
 
         <!-- 侧栏 · 下半：联系方式与网络身份 -->
@@ -214,13 +201,12 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
           class="border-t border-secondary-200 px-5 py-6 sheet:col-start-1 sheet:row-start-2 sheet:flex sheet:flex-col sheet:border-t-0 sheet:border-r sheet:border-secondary-200 sheet:px-6 sheet:pt-(--gap-side) sheet:pb-(--pad-y)"
         >
           <div
-            class="space-y-5 sheet:flex sheet:h-full sheet:flex-col sheet:justify-between sheet:gap-(--gap-side) sheet:space-y-0"
+            class="space-y-5 sheet:flex sheet:h-full sheet:flex-col sheet:justify-start sheet:gap-(--gap-side) sheet:space-y-0"
           >
             <div>
               <SectionHeading title="联系方式" />
               <dl class="mt-2.5 space-y-2">
-                {
-                  contacts.map((row) => (
+                {contacts.map((row) => (
                     <div class="flex items-center gap-2.5">
                       <dt class="shrink-0 text-(length:--fs-side) text-secondary-400">
                         <Icon name={row.icon} class="size-[1.15em]" />
@@ -235,16 +221,14 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
                         {row.value}
                       </dd>
                     </div>
-                  ))
-                }
+                  ))}
               </dl>
             </div>
 
             <div>
               <SectionHeading title="互联网身份" />
               <dl class="mt-2.5 space-y-2">
-                {
-                  identities.map((row) => (
+                {identities.map((row) => (
                     <div class="flex items-center gap-2.5">
                       <dt class="shrink-0 text-(length:--fs-side) text-secondary-400">
                         <Icon name={row.icon} class="size-[1.15em]" />
@@ -261,8 +245,7 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
                         </a>
                       </dd>
                     </div>
-                  ))
-                }
+                  ))}
               </dl>
             </div>
           </div>
@@ -273,18 +256,16 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
       <footer
         class="flex items-center justify-between gap-4 border-t border-secondary-200 px-5 py-4 text-(length:--fs-micro) text-secondary-400 sheet:px-6 sheet:py-2.5"
       >
-        <p class="tracking-[0.14em]">
-          &copy; {new Date().getFullYear()} tcdw | Updated {profile.updatedAt}
-        </p>
-        <!--<div class="flex items-center gap-4">-->
-        <!--  <button-->
-        <!--    type="button"-->
-        <!--    onclick="window.print()"-->
-        <!--    class="cursor-pointer rounded-xs border border-secondary-200 px-2 py-0.5 tracking-[0.14em] text-secondary-500 transition-colors hover:border-primary-300 hover:text-primary-700 print:hidden"-->
-        <!--  >-->
-        <!--    打印 / PDF-->
-        <!--  </button>-->
-        <!--</div>-->
+        <p class="tracking-[0.14em]">&copy; {new Date().getFullYear()} tcdw | Updated {profile.updatedAt}</p>
+        <!--        <div class="flex items-center gap-4">
+          <button
+            type="button"
+            onclick="window.print()"
+            class="cursor-pointer rounded-xs border border-secondary-200 px-2 py-0.5 tracking-[0.14em] text-secondary-500 transition-colors hover:border-primary-300 hover:text-primary-700 print:hidden"
+          >
+            打印 / PDF
+          </button>
+        </div>-->
       </footer>
     </div>
   </body>
