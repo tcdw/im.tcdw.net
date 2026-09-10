@@ -65,6 +65,13 @@ export interface Profile {
   detail: string;
 }
 
+/** 你可能想要知道的……（本人口述） */
+export const notes = [
+  '可以拍正脸合照',
+  '不吃水产 / 鱼类，也吃不了极辣的东西',
+  '并非大佬，经验其实还很浅薄，希望是互相交流而不是被瞻仰',
+];
+
 /** 最近在做什么 */
 export const projects: Profile[] = [
   {
