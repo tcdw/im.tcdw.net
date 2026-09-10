@@ -12,6 +12,12 @@ const isPlaceholder = (text: string) => text.startsWith('待补充');
 
 /** 协议头和末尾斜杠在纸上是噪音，打印时只留地址本体 */
 const printableUrl = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+
+const pageTitle = `${profile.kicker} ${profile.name}`;
+const pageDescription = '5 分钟了解 tcdw：我是谁、最近在做什么，以及主要的技术方向。';
+/** Astro.site 在 astro.config.mjs 里配置，用来把资源路径拼成 OG 需要的绝对地址 */
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const ogImageUrl = new URL('/open-graph.png', Astro.site);
 ---
 
 <html lang="zh-CN">
@@ -21,8 +27,25 @@ const printableUrl = (url: string) => url.replace(/^https?:\/\//, '').replace(/\
     <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content={Astro.generator}>
-    <meta name="description" content="5 分钟了解 tcdw：我是谁、最近在做什么，以及主要的技术方向。">
-    <title>5 分钟了解 tcdw</title>
+    <meta name="description" content={pageDescription}>
+    <link rel="canonical" href={canonicalUrl}>
+    <title>{pageTitle}</title>
+
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content={profile.site}>
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:url" content={canonicalUrl}>
+    <meta property="og:title" content={pageTitle}>
+    <meta property="og:description" content={pageDescription}>
+    <meta property="og:image" content={ogImageUrl}>
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content={`${pageTitle}：Web / 移动端开发者，右侧为雪乃碗插画`}>
+    <meta property="profile:username" content={profile.name}>
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@tcdwww">
   </head>
 
   <body class="bg-secondary-100/70 text-secondary-700 sheet:p-10">
