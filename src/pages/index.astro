@@ -134,6 +134,21 @@ const ogImageUrl = new URL('/open-graph.png', Astro.site);
                   >
                     {row.value}
                   </dd>
+                  {row.url && (
+                    <dd class="mt-1">
+                      <a
+                        href={row.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-1 text-(length:--fs-tag) text-primary-700 hover:text-primary-800 transition-colors duration-200"
+                      >
+                        <Icon name="ri:file-user-line" class="size-[1.1em]" />
+                        <span class="print:hidden">看看我的简历</span>
+                        <!-- 纸上点不了，所以打印时换成可以照着敲的地址 -->
+                        <span class="hidden print:inline">{printableUrl(row.url)}</span>
+                      </a>
+                    </dd>
+                  )}
                 </div>
               ))}
           </dl>
