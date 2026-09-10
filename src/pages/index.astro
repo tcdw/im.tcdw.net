@@ -26,21 +26,21 @@ const printableUrl = (url: string) => url.replace(/^https?:\/\//, '').replace(/\
 
   <body class="bg-secondary-100/70 text-secondary-700 sheet:p-10">
     <div
-      class="sheet relative isolate mx-auto flex w-full max-w-(--sheet-max) flex-col overflow-hidden rounded-2xl bg-white shadow-2xl sheet:min-h-(--sheet-h)"
+      class="sheet relative isolate mx-auto flex w-full max-w-(--sheet-max) flex-col overflow-hidden sheet:rounded-2xl bg-white sheet:shadow-2xl sheet:min-h-(--sheet-h)"
     >
       <!-- 右下角的装饰画：isolate + -z-10 让它压在白底之上、正文之下 -->
       <Image
         src={corner}
         alt=""
         aria-hidden="true"
-        width={540}
-        height={723}
+        width={480}
+        height={640}
         densities={[1, 2]}
-        class="pointer-events-none absolute right-4 bottom-12 -z-10 w-60 opacity-5 sheet:w-135"
+        class="pointer-events-none absolute right-4 bottom-12 -z-10 w-60 opacity-8 sheet:w-120"
       />
       <!-- 报头 -->
       <header
-        class="flex flex-col gap-3 border-b border-secondary-200 px-5 pt-7 pb-5 sheet:flex-row sheet:items-end sheet:justify-between sheet:gap-10 sheet:ps-6 sheet:pe-6 sheet:pt-5 sheet:pb-4"
+        class="flex flex-col gap-3 sheet:border-b sheet:border-secondary-200 px-5 pt-7 sheet:pb-5 sheet:flex-row sheet:items-end sheet:justify-between sheet:gap-10 sheet:ps-6 sheet:pe-6 sheet:pt-5 sheet:pb-4"
       >
         <div class="flex-0">
           <p class="text-sm text-primary-600">
@@ -57,13 +57,13 @@ const printableUrl = (url: string) => url.replace(/^https?:\/\//, '').replace(/\
         <div class="flex-1 space-y-1">
           <p
             class:list={[
-              "text-(length:--fs-lede) leading-relaxed text-end",
+              "text-(length:--fs-lede) leading-relaxed sheet:text-end",
               isPlaceholder(profile.tagline) ? "ph" : "text-secondary-600",
             ]}
           >
             {profile.tagline}
           </p>
-          <p class="text-(length:--fs-motto) text-primary-700/80 text-end">
+          <p class="text-(length:--fs-motto) text-primary-700/80 sheet:text-end">
             {profile.motto}{" "}
             <span class="text-secondary-400">- GitHub bio</span>
           </p>
@@ -76,19 +76,12 @@ const printableUrl = (url: string) => url.replace(/^https?:\/\//, '').replace(/\
         <aside
           class="border-b border-secondary-200 px-5 py-6 sheet:col-start-1 sheet:row-start-1 sheet:border-b-0 sheet:border-r sheet:px-6 sheet:pt-(--pad-y) sheet:pb-0"
         >
-          {profile.avatar ? (
-              <img
-                src={profile.avatar}
-                alt={profile.name}
-                class="aspect-square w-24 rounded-xl object-cover sheet:w-26"
-             />
-            ) : (
-              <div class="grid aspect-square w-24 place-items-center rounded-sm border border-dashed border-primary-300 bg-primary-100/50 text-(length:--fs-label) tracking-[0.2em] text-primary-700/70 sheet:w-26">
-                Avatar
-              </div>
-            )}
-
-          <dl class="mt-5 space-y-2.5 sheet:space-y-3">
+          <img
+            src={profile.avatar}
+            alt={profile.name}
+            class="hidden sheet:block aspect-square w-24 rounded-xl object-cover sheet:w-26"
+          />
+          <dl class="sheet:mt-5 space-y-2.5 sheet:space-y-3">
             {now.map((row) => (
                 <div>
                   <dt class="text-(length:--fs-label) tracking-[0.16em] text-secondary-400 uppercase">
