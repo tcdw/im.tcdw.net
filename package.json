@@ -2,6 +2,7 @@
   "name": "im.tcdw.net",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@12.3.4",
   "engines": {
     "node": ">=22.12.0"
   },
