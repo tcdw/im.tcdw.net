@@ -43,7 +43,7 @@ export const now: NowRow[] = [
   // 博客首页现在写的是「~~在北京当社畜。~~失业中。」，最新一篇文章也是在聊求职
   { label: '状态', value: '失业中，正在找新的机会', url: 'https://resume.tcdw.net' },
   // 博客上「北京」已划掉，GitHub 只写了 China，先留空
-  { label: '坐标', value: '北京' },
+  { label: '坐标', value: '北京 / 呼和浩特' },
   { label: '喜欢', value: 'Homelab、轨道交通、城市摄影' },
 ];
 
