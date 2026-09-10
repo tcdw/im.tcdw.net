@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
+import avatar from '../assets/avatar.png';
 import corner from '../assets/corner.jpg';
 import SectionHeading from '../components/SectionHeading.astro';
 import { about, contacts, identities, notes, now, profile, projects, stack } from '../data/profile';
@@ -42,17 +43,27 @@ const printableUrl = (url: string) => url.replace(/^https?:\/\//, '').replace(/\
       <header
         class="flex flex-col gap-3 sheet:border-b sheet:border-secondary-200 px-5 pt-7 sheet:pb-5 sheet:flex-row sheet:items-end sheet:justify-between sheet:gap-10 sheet:ps-6 sheet:pe-6 sheet:pt-5 sheet:pb-4"
       >
-        <div class="flex-0">
-          <p class="text-sm text-primary-600">
-            {profile.kicker}
-          </p>
-          <h1 class="mt-2 flex items-baseline gap-2.5 sheet:mt-1.5">
-            <span class="text-(length:--fs-display) leading-none tracking-tight text-secondary-900"
-              >{profile.name}</span
-            >
-            <span class="text-(length:--fs-sep) leading-none text-secondary-300">／</span>
-            <span class="text-(length:--fs-alias) leading-none font-medium text-secondary-600">{profile.alias}</span>
-          </h1>
+        <div class="flex-0 flex">
+          <div class="flex-1">
+            <p class="text-sm text-primary-600">
+              {profile.kicker}
+            </p>
+            <h1 class="mt-2 flex items-baseline gap-2.5 sheet:mt-1.5">
+              <span class="text-(length:--fs-display) leading-none tracking-tight text-secondary-900"
+                >{profile.name}</span
+              >
+              <span class="text-(length:--fs-sep) leading-none text-secondary-300">／</span>
+              <span class="text-(length:--fs-alias) leading-none font-medium text-secondary-600">{profile.alias}</span>
+            </h1>
+          </div>
+          <Image
+            src={avatar}
+            alt={profile.name}
+            width={64}
+            height={64}
+            densities={[1, 2]}
+            class="flex-0 sheet:hidden aspect-square w-16 rounded-full object-cover"
+          />
         </div>
         <div class="flex-1 space-y-1">
           <p
@@ -76,9 +87,12 @@ const printableUrl = (url: string) => url.replace(/^https?:\/\//, '').replace(/\
         <aside
           class="border-b border-secondary-200 px-5 py-6 sheet:col-start-1 sheet:row-start-1 sheet:border-b-0 sheet:border-r sheet:px-6 sheet:pt-(--pad-y) sheet:pb-0"
         >
-          <img
-            src={profile.avatar}
+          <Image
+            src={avatar}
             alt={profile.name}
+            width={104}
+            height={104}
+            densities={[1, 2]}
             class="hidden sheet:block aspect-square w-24 rounded-xl object-cover sheet:w-26"
           />
           <dl class="sheet:mt-5 space-y-2.5 sheet:space-y-3">

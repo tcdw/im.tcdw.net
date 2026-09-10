@@ -20,8 +20,6 @@ export const profile = {
   tagline: '小透明前端（Web / 移动端）开发者，React Native (Expo) 用户',
   // GitHub bio
   motto: '面向咕咕编程 (Pigeon-oriented programming)',
-  // 从博客仓库 src/assets/avatar.png 复制并缩放而来
-  avatar: '/avatar.png' as string | null,
   updatedAt: '2026-09-07',
   site: 'im.tcdw.net',
 };
