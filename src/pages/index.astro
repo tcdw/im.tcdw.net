@@ -3,7 +3,7 @@ import '../styles/global.css';
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import avatar from '../assets/avatar.png';
-import corner from '../assets/corner.jpg';
+import corner from '../assets/corner.png';
 import SectionHeading from '../components/SectionHeading.astro';
 import { about, contacts, identities, notes, now, profile, projects, stack } from '../data/profile';
 
@@ -61,9 +61,8 @@ const ogImageUrl = new URL('/open-graph.png', Astro.site);
         alt=""
         aria-hidden="true"
         width={480}
-        height={640}
         densities={[1, 2]}
-        class="pointer-events-none absolute right-4 bottom-12 -z-10 w-60 opacity-8 sheet:w-120"
+        class="pointer-events-none absolute right-4 bottom-12 -z-10 w-60 opacity-7 sheet:w-120"
       />
       <!-- 报头 -->
       <header
