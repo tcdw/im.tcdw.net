@@ -20,7 +20,7 @@ export const profile = {
   tagline: '小透明前端（Web / 移动端）开发者，React Native (Expo) 用户',
   // GitHub bio
   motto: '面向咕咕编程 (Pigeon-oriented programming)',
-  updatedAt: '2026-09-07',
+  updatedAt: new Date().toLocaleDateString("zh-Hans-CN"),
   site: 'im.tcdw.net',
 };
 
@@ -57,6 +57,7 @@ export const contacts = [
 export const identities = [
   { label: 'GitHub', value: '@tcdw', href: 'https://github.com/tcdw', icon: 'simple-icons:github' },
   { label: 'X', value: '@tcdwww', href: 'https://x.com/tcdwww', icon: 'simple-icons:x' },
+  { label: 'Telegram Channel', value: '@tcdw_channel', href: 'https://t.me/tcdw_channel', icon: 'simple-icons:telegram' },
   { label: 'YouTube', value: '@tcdwww', href: 'https://youtube.com/@tcdwww', icon: 'simple-icons:youtube' },
   { label: 'Bluesky', value: '@tcdw.net', href: 'https://bsky.app/profile/tcdw.net', icon: 'simple-icons:bluesky' },
   { label: 'Blog', value: 'www.tcdw.net', href: 'https://www.tcdw.net/', icon: 'ri:global-line' },
