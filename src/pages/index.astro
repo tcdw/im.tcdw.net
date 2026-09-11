@@ -56,9 +56,9 @@ const ogImageUrl = new URL('/open-graph.png', Astro.site);
     >
   </head>
 
-  <body class="bg-secondary-100/70 text-secondary-700 sheet:p-10">
+  <body class="bg-white sheet:bg-secondary-100/70 text-secondary-700 sheet:p-8">
     <div
-      class="sheet relative isolate mx-auto flex w-full max-w-(--sheet-max) flex-col overflow-hidden sheet:rounded-2xl bg-white sheet:shadow-2xl sheet:min-h-(--sheet-h)"
+      class="sheet relative isolate mx-auto flex w-full max-w-(--sheet-max) flex-col overflow-hidden sheet:bg-white sheet:rounded-2xl sheet:shadow-2xl sheet:min-h-(--sheet-h)"
     >
       <!-- 右下角的装饰画：isolate + -z-10 让它压在白底之上、正文之下 -->
       <Image
@@ -67,7 +67,7 @@ const ogImageUrl = new URL('/open-graph.png', Astro.site);
         aria-hidden="true"
         width={480}
         densities={[1, 2]}
-        class="pointer-events-none absolute right-4 bottom-12 -z-10 w-60 opacity-7 sheet:w-120"
+        class="pointer-events-none fixed sheet:absolute right-4 bottom-12 -z-10 w-64 opacity-7 sheet:w-120"
       />
       <!-- 报头 -->
       <header
@@ -78,7 +78,7 @@ const ogImageUrl = new URL('/open-graph.png', Astro.site);
             <p class="text-sm text-primary-600">
               {profile.kicker}
             </p>
-            <h1 class="mt-2 flex items-baseline gap-2.5 sheet:mt-1.5">
+            <h1 class="mt-2 flex items-baseline gap-2 sheet:mt-1.5">
               <span class="text-(length:--fs-display) leading-none tracking-tight text-secondary-900"
                 >{profile.name}</span
               >
