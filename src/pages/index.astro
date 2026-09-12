@@ -161,7 +161,7 @@ const ogImageUrl = new URL('/open-graph.png', Astro.site);
 
         <!-- 主内容 -->
         <main
-          class="flex flex-col gap-6 px-5 py-6 sheet:col-start-2 sheet:row-span-2 sheet:row-start-1 sheet:justify-between sheet:gap-6 sheet:px-8 sheet:py-8 sheet:py-(--pad-y)"
+          class="flex flex-col gap-6 px-5 py-6 sheet:col-start-2 sheet:row-span-2 sheet:row-start-1 sheet:justify-between sheet:gap-6 sheet:px-8 sheet:py-8 print:sheet:px-6 print:sheet:py-6"
         >
           <section>
             <SectionHeading title="我是谁" />
@@ -242,7 +242,7 @@ const ogImageUrl = new URL('/open-graph.png', Astro.site);
           <div class="flex flex-col gap-6 sheet:grid sheet:grid-cols-[1fr_1fr] sheet:gap-6">
             <section>
               <SectionHeading title="技术方向" />
-              <div class="mt-4 space-y-2.5 sheet:space-y-5">
+              <div class="mt-4 space-y-2.5 sheet:space-y-5 print:sheet:space-y-3">
                 {stack.map((group) => (
                     <div>
                       <p class="text-(length:--fs-label) tracking-[0.16em] text-secondary-400">
