@@ -116,5 +116,5 @@ export const projects: Profile[] = [
 export const stack = [
   { group: '日常主力', items: ['TypeScript', 'React', 'React Native / Expo', 'Node.js / Bun'] },
   { group: 'AI 方向', items: ['AI Agent', 'Harness', 'Context Engineering', '图片生成'] },
-  { group: '辅助方向', items: ['Astro', 'Backend', 'Infra', 'Homelab / Self-hosting'] },
+  { group: '辅助方向', items: ['Backend', 'Infra', 'Homelab / Self-hosting'] },
 ];
