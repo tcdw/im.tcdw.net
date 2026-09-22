@@ -82,7 +82,7 @@ export const notes = [
 export const projects: Profile[] = [
   {
     title: '塑料碗',
-    url: 'https://github.com/tcdw/plastic-wan',
+    url: 'https://tcdw.net/post/plastic-wan-phase-1/',
     kind: 'Telegram / Agent',
     summary: '跑在 Telegram 私聊、群组和 Forum Topic 里的 Agent Bot。',
     detail:
