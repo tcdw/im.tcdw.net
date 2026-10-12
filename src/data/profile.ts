@@ -26,9 +26,9 @@ export const profile = {
 
 /** 我是谁 */
 export const about = [
-  '写 Web 前端，也写 React Native (Expo) 移动端。博客「吐槽大王部落格」建于 2012 年，一路写到现在。',
+  'Web / React Native 开发者，但是现在也开始沾一点 Agent 开发了。有一个博客站「吐槽大王部落格」，建于 2012 年。',
   '喜欢观察城市、喜欢工业之美。是普通人，希望与你交朋友！',
-  '如今正在尝试转型为懂 Agent 开发的全栈工程师……',
+  '如今依然在摸索属于自己的人生之路……',
 ];
 
 /** 现在（sidebar 顶部的短状态） */
@@ -73,8 +73,9 @@ export interface Profile {
 
 /** 你可能想要知道的……（本人口述） */
 export const notes = [
-  '可以拍正脸合照',
+  '可以拍照！但是不要对我录音录像🫣',
   '不吃水产 / 鱼类，也吃不了极辣的东西',
+  '属于 ego 有一点重的人类',
   '并非大佬，经验其实还很浅薄，希望是互相交流而不是被瞻仰',
 ];
 
@@ -86,7 +87,7 @@ export const projects: Profile[] = [
     kind: 'Telegram / Agent',
     summary: '跑在 Telegram 私聊、群组和 Forum Topic 里的 Agent Bot。',
     detail:
-      '按固定时间窗口把消息整合成 bucket，构造受限上下文，让模型自己决定要不要开口。所有副作用必须走显式 Tool Call。基于 Bun + Pi Agent Framework + 自制调度引擎。',
+      '按固定时间窗口把消息整合成 bucket，构造受限上下文，让模型自己决定要不要开口。所有副作用必须走显式 Tool Call。基于 Node.js + Pi Agent Framework + 自制调度引擎。',
   },
   {
     title: '雪乃碗 / Yukino Wan',
